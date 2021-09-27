@@ -16,6 +16,7 @@
 ///
 /// A `ByteBufferView` is useful whenever a `Collection where Element == UInt8` representing a portion of a
 /// `ByteBuffer` is needed.
+@frozen
 public struct ByteBufferView: RandomAccessCollection {
     public typealias Element = UInt8
     public typealias Index = Int

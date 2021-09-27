@@ -17,6 +17,7 @@ import Darwin.C
 import Glibc
 #endif
 
+@frozen
 @usableFromInline
 internal struct Heap<Element: Comparable> {
     @usableFromInline
@@ -196,6 +197,7 @@ extension Heap: CustomDebugStringConvertible {
     }
 }
 
+@frozen
 @usableFromInline
 struct HeapIterator<Element: Comparable>: IteratorProtocol {
     /* private but */ @usableFromInline

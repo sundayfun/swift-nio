@@ -157,6 +157,7 @@ extension UInt32 {
 
 /// Endianness refers to the sequential order in which bytes are arranged into larger numerical values when stored in
 /// memory or when transmitted over digital links.
+@frozen
 public enum Endianness {
     /// The endianness of the machine running this program.
     public static let host: Endianness = hostEndianness0()

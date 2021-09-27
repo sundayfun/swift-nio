@@ -114,6 +114,7 @@ extension ChannelOptions.TCPConvenienceOption {
 
 extension ChannelOptions {
     /// A set of `TCPConvenienceOption`s
+    @frozen
     public struct TCPConvenienceOptions: ExpressibleByArrayLiteral, Hashable {
         var allowLocalEndpointReuse = false
         var disableAutoRead = false

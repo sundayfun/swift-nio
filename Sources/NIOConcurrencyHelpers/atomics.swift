@@ -51,6 +51,7 @@ fileprivate func sys_sched_yield() {
 /// Atomic primitives are useful when building constructs that need to
 /// communicate or cooperate across multiple threads. In the case of
 /// SwiftNIO this usually involves communicating across multiple event loops.
+@frozen
 public struct UnsafeEmbeddedAtomic<T: AtomicPrimitive> {
     @usableFromInline
     internal let value: OpaquePointer
@@ -177,7 +178,6 @@ public final class Atomic<T: AtomicPrimitive> {
     internal let embedded: UnsafeEmbeddedAtomic<T>
 
     /// Create an atomic object with `value`.
-    @inlinable
     public init(value: T) {
         self.embedded = UnsafeEmbeddedAtomic(value: value)
     }

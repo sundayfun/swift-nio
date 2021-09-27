@@ -194,18 +194,17 @@ public final class NIOSingleStepByteToMessageProcessor<Decoder: NIOSingleStepByt
     }
 
     @usableFromInline
-    internal private(set) var decoder: Decoder
+    internal var decoder: Decoder
     @usableFromInline
     let maximumBufferSize: Int?
     @usableFromInline
-    internal private(set) var _buffer: ByteBuffer?
+    internal var _buffer: ByteBuffer?
 
     /// Initialize a `NIOSingleStepByteToMessageProcessor`.
     ///
     /// - parameters:
     ///     - decoder: The `NIOSingleStepByteToMessageDecoder` to decode the bytes into message.
     ///     - maximumBufferSize: The maximum number of bytes to aggregate in-memory.
-    @inlinable
     public init(_ decoder: Decoder, maximumBufferSize: Int? = nil) {
         self.decoder = decoder
         self.maximumBufferSize = maximumBufferSize

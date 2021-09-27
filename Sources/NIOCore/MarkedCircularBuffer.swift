@@ -17,6 +17,7 @@
 /// This object is used extensively within SwiftNIO to handle flushable buffers. It can be used to store buffered
 /// writes and mark how far through the buffer the user has flushed, and therefore how far through the buffer is
 /// safe to write.
+@frozen
 public struct MarkedCircularBuffer<Element>: CustomStringConvertible {
     @usableFromInline internal var _buffer: CircularBuffer<Element>
     @usableFromInline internal var _markedIndexOffset: Int? /* nil: nothing marked */

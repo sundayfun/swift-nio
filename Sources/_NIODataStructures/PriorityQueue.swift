@@ -12,6 +12,7 @@
 //
 //===----------------------------------------------------------------------===//
 
+@frozen
 public struct PriorityQueue<Element: Comparable> {
     @usableFromInline
     internal var _heap: Heap<Element>
@@ -61,6 +62,7 @@ extension PriorityQueue: Equatable {
 }
 
 extension PriorityQueue: Sequence {
+    @frozen
     public struct Iterator: IteratorProtocol {
 
         /* private but */ @usableFromInline

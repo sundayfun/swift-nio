@@ -15,6 +15,7 @@
 /// An automatically expanding ring buffer implementation backed by a `ContiguousArray`. Even though this implementation
 /// will automatically expand if more elements than `initialCapacity` are stored, it's advantageous to prevent
 /// expansions from happening frequently. Expansions will always force an allocation and a copy to happen.
+@frozen
 public struct CircularBuffer<Element>: CustomStringConvertible {
     @usableFromInline
     internal var _buffer: ContiguousArray<Element?>
@@ -62,6 +63,7 @@ public struct CircularBuffer<Element>: CustomStringConvertible {
     ///
     /// - note: Every index is invalidated as soon as you perform a length-changing operating on the `CircularBuffer`
     ///         but remains valid when you replace one item by another using the subscript.
+    @frozen
     public struct Index: Comparable {
         @usableFromInline var _backingIndex: UInt32
         @usableFromInline var _backingCheck: _UInt24

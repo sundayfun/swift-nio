@@ -19,6 +19,7 @@ import Dispatch
 ///
 /// A `Scheduled` allows the user to either `cancel()` the execution of the scheduled task (if possible) or obtain a reference to the `EventLoopFuture` that
 /// will be notified once the execution is complete.
+@frozen
 public struct Scheduled<T> {
     /* private but usableFromInline */ @usableFromInline let _promise: EventLoopPromise<T>
 

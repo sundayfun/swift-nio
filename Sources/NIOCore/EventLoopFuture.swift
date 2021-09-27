@@ -23,6 +23,7 @@ import Dispatch
 /// In particular, note that _run() here continues to obtain and execute lists of callbacks until it completes.
 /// This eliminates recursion when processing `flatMap()` chains.
 @usableFromInline
+@frozen
 internal struct CallbackList {
     @usableFromInline
     internal typealias Element = () -> CallbackList
@@ -32,6 +33,7 @@ internal struct CallbackList {
     internal var furtherCallbacks: Optional<[Element]>
 
     @inlinable
+    @inline(__always)
     internal init() {
         self.firstCallback = nil
         self.furtherCallbacks = nil
@@ -151,6 +153,7 @@ internal struct OperationPlaceholderError: Error {
 ///     or `eventLoop.newFailedFuture(error:)`.
 ///
 /// - note: `EventLoopPromise` has reference semantics.
+@frozen
 public struct EventLoopPromise<Value> {
     /// The `EventLoopFuture` which is used by the `EventLoopPromise`. You can use it to add callbacks which are notified once the
     /// `EventLoopPromise` is completed.
@@ -385,7 +388,7 @@ public final class EventLoopFuture<Value> {
     @usableFromInline
     internal var _callbacks: CallbackList
 
-    @inlinable
+    @usableFromInline
     internal init(_eventLoop eventLoop: EventLoop, value: Result<Value, Error>?, file: StaticString, line: UInt) {
         self.eventLoop = eventLoop
         self._value = value
@@ -396,19 +399,19 @@ public final class EventLoopFuture<Value> {
         }
     }
 
-    @inlinable
+    @usableFromInline
     internal convenience init(_eventLoop eventLoop: EventLoop, file: StaticString, line: UInt) {
         self.init(_eventLoop: eventLoop, value: nil, file: file, line: line)
     }
 
     /// A EventLoopFuture<Value> that has already succeeded
-    @inlinable
+    @usableFromInline
     internal convenience init(eventLoop: EventLoop, value: Value, file: StaticString, line: UInt) {
         self.init(_eventLoop: eventLoop, value: .success(value), file: file, line: line)
     }
 
     /// A EventLoopFuture<Value> that has already failed
-    @inlinable
+    @usableFromInline
     internal convenience init(eventLoop: EventLoop, error: Error, file: StaticString, line: UInt) {
         self.init(_eventLoop: eventLoop, value: .failure(error), file: file, line: line)
     }

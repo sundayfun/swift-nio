@@ -42,6 +42,7 @@
 ///              context.fireChannelRead(self.wrapInboundOut(sandwich)) /* as promised we deliver a wrapped `Sandwich` */
 ///         }
 ///     }
+@frozen
 public struct NIOAny {
     @usableFromInline
     /* private but _versioned */ let _storage: _NIOAny
@@ -54,6 +55,7 @@ public struct NIOAny {
         self._storage = _NIOAny(value)
     }
 
+    @frozen
     @usableFromInline
     enum _NIOAny {
         case ioData(IOData)

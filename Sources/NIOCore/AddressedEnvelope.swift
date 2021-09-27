@@ -59,6 +59,7 @@ extension AddressedEnvelope: CustomStringConvertible {
 }
 
 /// Possible Explicit Congestion Notification States
+@frozen
 public enum NIOExplicitCongestionNotificationState: Hashable {
     /// Non-ECN Capable Transport.
     case transportNotCapable

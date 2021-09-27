@@ -55,6 +55,7 @@ extension SocketAddressError {
 }
 
 /// Represent a socket address to which we may want to connect or bind.
+@frozen
 public enum SocketAddress: CustomStringConvertible {
 
     /// A single IPv4 address for `SocketAddress`.

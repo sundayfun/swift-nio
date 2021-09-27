@@ -18,6 +18,7 @@
 
 /// A 24-bit unsigned integer value type.
 @usableFromInline
+@frozen
 struct _UInt24 {
     @usableFromInline var _backing: (UInt16, UInt8)
 
